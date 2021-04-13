@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AT_PROVEEDORController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PT_TIPO_UNIDADController.cs" />
     <Compile Include="Global.asax.cs">
@@ -276,14 +277,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Prueba\PT_UNIDADView.cshtml" />
-    <Content Include="Views\Prueba\Tipo_unidad.cshtml" />
-    <Content Include="Views\Prueba\Proveedor.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Create.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Delete.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Details.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Edit.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Index.cshtml" />
+    <Content Include="Views\AT_PROVEEDOR\Create.cshtml" />
+    <Content Include="Views\AT_PROVEEDOR\Delete.cshtml" />
+    <Content Include="Views\AT_PROVEEDOR\Details.cshtml" />
+    <Content Include="Views\AT_PROVEEDOR\Edit.cshtml" />
+    <Content Include="Views\AT_PROVEEDOR\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
