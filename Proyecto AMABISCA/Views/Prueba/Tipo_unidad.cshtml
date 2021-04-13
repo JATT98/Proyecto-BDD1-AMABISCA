@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.PT_TIPO_UNIDAD>
+
+@{
+    ViewBag.Title = "Tipo_unidad";
+}
+
+<h2>Tipo_unidad</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PC_TIPO_UNIDAD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PC_TIPO_UNIDAD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PC_TIPO_UNIDAD })
+        </td>
+    </tr>
+}
+
+</table>

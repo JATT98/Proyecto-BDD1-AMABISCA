@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a355a85060a84f9d80a1a620f30783c4" Name="Diagram1">
+        <EntityTypeShape EntityType="AMABISCAModel.AT_DESCRIPCION" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.AT_PROVEEDOR" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.BT_DESCRIPCION" Width="1.5" PointX="10.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.BT_TIPO" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.IT_DESCRIPCION" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.OT_DESCRIPCION" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.OT_ENVIO" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.OT_ESTADO" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.OT_IDENTIFICACION" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.PT_CATEGORIA" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.PT_DESCRIPCION" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.PT_TIPO_UNIDAD" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.PT_UNIDAD" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.UT_CUENTA" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.UT_DESCRIPCION" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMABISCAModel.UT_ROL" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="AMABISCAModel.Reft_producto12" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_proveedor13" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_producto14" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_tipo_baja15" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_producto24" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_orden10" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_producto11" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_envio22" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_estado21" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_usuario19" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_usuario20" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_categoria5" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_unidad9" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_tipo_unidad4" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_rol_usuario18" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.Reft_usuario16" ManuallyRouted="false" />
+        <AssociationConnector Association="AMABISCAModel.PT_RELACION_CATEGORIA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.AT_PROVEEDOR>
+
+@{
+    ViewBag.Title = "Proveedor";
+}
+
+<h2>Proveedor</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RAZON_SOCIAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIRECCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RAZON_SOCIAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PC_PROVEEDOR }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PC_PROVEEDOR }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PC_PROVEEDOR })
+        </td>
+    </tr>
+}
+
+</table>

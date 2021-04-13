@@ -1,0 +1,1386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AMABISCAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PC_ALTA" />
+          </Key>
+          <Property Name="PC_ALTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="F_CREACION" Type="date" Nullable="false" />
+          <Property Name="RC_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="RC_PROVEEDOR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AT_PROVEEDOR">
+          <Key>
+            <PropertyRef Name="PC_PROVEEDOR" />
+          </Key>
+          <Property Name="PC_PROVEEDOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DIRECCION" Type="text" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PC_BAJA" />
+          </Key>
+          <Property Name="PC_BAJA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DETALLE" Type="text" />
+          <Property Name="F_CREACION" Type="date" Nullable="false" />
+          <Property Name="RC_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="RC_TIPO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BT_TIPO">
+          <Key>
+            <PropertyRef Name="PC_TIPO" />
+          </Key>
+          <Property Name="PC_TIPO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PRC_PRODUCTO" />
+            <PropertyRef Name="PF_ESTADO" />
+          </Key>
+          <Property Name="PRC_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="PF_ESTADO" Type="date" Nullable="false" />
+          <Property Name="EXISTENCIA" Type="int" Nullable="false" />
+          <Property Name="CANTIDAD_BAJA" Type="int" Nullable="false" />
+          <Property Name="CANTIDAD_ALTA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PRC_ORDEN" />
+            <PropertyRef Name="PRC_PRODUCTO" />
+          </Key>
+          <Property Name="PRC_ORDEN" Type="int" Nullable="false" />
+          <Property Name="PRC_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="CONDICION" Type="text" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OT_ENVIO">
+          <Key>
+            <PropertyRef Name="PC_ENVIO" />
+          </Key>
+          <Property Name="PC_ENVIO" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OT_ESTADO">
+          <Key>
+            <PropertyRef Name="PC_ESTADO" />
+          </Key>
+          <Property Name="PC_ESTADO" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OT_IDENTIFICACION">
+          <Key>
+            <PropertyRef Name="PC_ORDEN" />
+          </Key>
+          <Property Name="PC_ORDEN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F_EMISION" Type="datetime" Nullable="false" />
+          <Property Name="RC_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="RC_EMISOR" Type="int" Nullable="false" />
+          <Property Name="RC_ESTADO" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="RC_ENVIO" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PT_CATEGORIA">
+          <Key>
+            <PropertyRef Name="PC_CATEGORIA" />
+          </Key>
+          <Property Name="PC_CATEGORIA" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="RC_CATEGORIA_PADRE" Type="char" MaxLength="3" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IMAGEN" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PC_PRODUCTO" />
+          </Key>
+          <Property Name="PC_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="text" Nullable="false" />
+          <Property Name="IMAGEN" Type="varbinary(max)" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="RC_UNIDAD" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PT_RELACION_CATEGORIA">
+          <Key>
+            <PropertyRef Name="PRC_PRODUCTO" />
+            <PropertyRef Name="PRC_CATEGORIA" />
+          </Key>
+          <Property Name="PRC_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="PRC_CATEGORIA" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PT_TIPO_UNIDAD">
+          <Key>
+            <PropertyRef Name="PC_TIPO_UNIDAD" />
+          </Key>
+          <Property Name="PC_TIPO_UNIDAD" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PT_UNIDAD">
+          <Key>
+            <PropertyRef Name="PC_UNIDAD" />
+          </Key>
+          <Property Name="PC_UNIDAD" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="RC_TIPO_UNIDAD" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UT_CUENTA">
+          <Key>
+            <PropertyRef Name="PC_CUENTA" />
+          </Key>
+          <Property Name="PC_CUENTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RC_ROL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PRC_USUARIO" />
+          </Key>
+          <Property Name="PRC_USUARIO" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DIRECCION" Type="text" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CORREO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UT_ROL">
+          <Key>
+            <PropertyRef Name="PC_ROL" />
+          </Key>
+          <Property Name="PC_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PERMISO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="Reft_categoria5">
+          <End Role="PT_CATEGORIA" Type="Self.PT_CATEGORIA" Multiplicity="0..1" />
+          <End Role="PT_CATEGORIA1" Type="Self.PT_CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_CATEGORIA">
+              <PropertyRef Name="PC_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PT_CATEGORIA1">
+              <PropertyRef Name="RC_CATEGORIA_PADRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_categoria8">
+          <End Role="PT_CATEGORIA" Type="Self.PT_CATEGORIA" Multiplicity="1" />
+          <End Role="PT_RELACION_CATEGORIA" Type="Self.PT_RELACION_CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_CATEGORIA">
+              <PropertyRef Name="PC_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PT_RELACION_CATEGORIA">
+              <PropertyRef Name="PRC_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_envio22">
+          <End Role="OT_ENVIO" Type="Self.OT_ENVIO" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT_ENVIO">
+              <PropertyRef Name="PC_ENVIO" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_ENVIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_estado21">
+          <End Role="OT_ESTADO" Type="Self.OT_ESTADO" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT_ESTADO">
+              <PropertyRef Name="PC_ESTADO" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_orden10">
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="1" />
+          <End Role="OT_DESCRIPCION" Type="Self.OT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT_IDENTIFICACION">
+              <PropertyRef Name="PC_ORDEN" />
+            </Principal>
+            <Dependent Role="OT_DESCRIPCION">
+              <PropertyRef Name="PRC_ORDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto11">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="OT_DESCRIPCION" Type="Self.OT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="OT_DESCRIPCION">
+              <PropertyRef Name="PRC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto12">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="AT_DESCRIPCION" Type="Self.AT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="AT_DESCRIPCION">
+              <PropertyRef Name="RC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto14">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="BT_DESCRIPCION" Type="Self.BT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="BT_DESCRIPCION">
+              <PropertyRef Name="RC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto24">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="IT_DESCRIPCION" Type="Self.IT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="IT_DESCRIPCION">
+              <PropertyRef Name="PRC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto6">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="PT_RELACION_CATEGORIA" Type="Self.PT_RELACION_CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="PT_RELACION_CATEGORIA">
+              <PropertyRef Name="PRC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_proveedor13">
+          <End Role="AT_PROVEEDOR" Type="Self.AT_PROVEEDOR" Multiplicity="1" />
+          <End Role="AT_DESCRIPCION" Type="Self.AT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AT_PROVEEDOR">
+              <PropertyRef Name="PC_PROVEEDOR" />
+            </Principal>
+            <Dependent Role="AT_DESCRIPCION">
+              <PropertyRef Name="RC_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_rol_usuario18">
+          <End Role="UT_ROL" Type="Self.UT_ROL" Multiplicity="1" />
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UT_ROL">
+              <PropertyRef Name="PC_ROL" />
+            </Principal>
+            <Dependent Role="UT_CUENTA">
+              <PropertyRef Name="RC_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_tipo_baja15">
+          <End Role="BT_TIPO" Type="Self.BT_TIPO" Multiplicity="1" />
+          <End Role="BT_DESCRIPCION" Type="Self.BT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BT_TIPO">
+              <PropertyRef Name="PC_TIPO" />
+            </Principal>
+            <Dependent Role="BT_DESCRIPCION">
+              <PropertyRef Name="RC_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_tipo_unidad4">
+          <End Role="PT_TIPO_UNIDAD" Type="Self.PT_TIPO_UNIDAD" Multiplicity="1" />
+          <End Role="PT_UNIDAD" Type="Self.PT_UNIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_TIPO_UNIDAD">
+              <PropertyRef Name="PC_TIPO_UNIDAD" />
+            </Principal>
+            <Dependent Role="PT_UNIDAD">
+              <PropertyRef Name="RC_TIPO_UNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_unidad9">
+          <End Role="PT_UNIDAD" Type="Self.PT_UNIDAD" Multiplicity="1" />
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_UNIDAD">
+              <PropertyRef Name="PC_UNIDAD" />
+            </Principal>
+            <Dependent Role="PT_DESCRIPCION">
+              <PropertyRef Name="RC_UNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_usuario16">
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="1" />
+          <End Role="UT_DESCRIPCION" Type="Self.UT_DESCRIPCION" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UT_CUENTA">
+              <PropertyRef Name="PC_CUENTA" />
+            </Principal>
+            <Dependent Role="UT_DESCRIPCION">
+              <PropertyRef Name="PRC_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_usuario19">
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UT_CUENTA">
+              <PropertyRef Name="PC_CUENTA" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_usuario20">
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UT_CUENTA">
+              <PropertyRef Name="PC_CUENTA" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_EMISOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="P_AGREGAR_ROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="PERMISO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="P_CLIENTES_RECURRENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LIMITE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="P_INVENTARIO_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FECHAMIN" Type="date" Mode="In" />
+          <Parameter Name="FECHAMAX" Type="date" Mode="In" />
+        </Function>
+        <Function Name="P_PRODUCTOS_SOLICITADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LIMITE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="P_VENTAS_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FECHAMIN" Type="date" Mode="In" />
+          <Parameter Name="FECHAMAX" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="AMABISCAModelStoreContainer">
+          <EntitySet Name="AT_DESCRIPCION" EntityType="Self.AT_DESCRIPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AT_PROVEEDOR" EntityType="Self.AT_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BT_DESCRIPCION" EntityType="Self.BT_DESCRIPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BT_TIPO" EntityType="Self.BT_TIPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IT_DESCRIPCION" EntityType="Self.IT_DESCRIPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OT_DESCRIPCION" EntityType="Self.OT_DESCRIPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OT_ENVIO" EntityType="Self.OT_ENVIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OT_ESTADO" EntityType="Self.OT_ESTADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OT_IDENTIFICACION" EntityType="Self.OT_IDENTIFICACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PT_CATEGORIA" EntityType="Self.PT_CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PT_DESCRIPCION" EntityType="Self.PT_DESCRIPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PT_RELACION_CATEGORIA" EntityType="Self.PT_RELACION_CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PT_TIPO_UNIDAD" EntityType="Self.PT_TIPO_UNIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PT_UNIDAD" EntityType="Self.PT_UNIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UT_CUENTA" EntityType="Self.UT_CUENTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UT_DESCRIPCION" EntityType="Self.UT_DESCRIPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UT_ROL" EntityType="Self.UT_ROL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Reft_categoria5" Association="Self.Reft_categoria5">
+            <End Role="PT_CATEGORIA" EntitySet="PT_CATEGORIA" />
+            <End Role="PT_CATEGORIA1" EntitySet="PT_CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_categoria8" Association="Self.Reft_categoria8">
+            <End Role="PT_CATEGORIA" EntitySet="PT_CATEGORIA" />
+            <End Role="PT_RELACION_CATEGORIA" EntitySet="PT_RELACION_CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_envio22" Association="Self.Reft_envio22">
+            <End Role="OT_ENVIO" EntitySet="OT_ENVIO" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_estado21" Association="Self.Reft_estado21">
+            <End Role="OT_ESTADO" EntitySet="OT_ESTADO" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_orden10" Association="Self.Reft_orden10">
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+            <End Role="OT_DESCRIPCION" EntitySet="OT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto11" Association="Self.Reft_producto11">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="OT_DESCRIPCION" EntitySet="OT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto12" Association="Self.Reft_producto12">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="AT_DESCRIPCION" EntitySet="AT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto14" Association="Self.Reft_producto14">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="BT_DESCRIPCION" EntitySet="BT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto24" Association="Self.Reft_producto24">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="IT_DESCRIPCION" EntitySet="IT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto6" Association="Self.Reft_producto6">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="PT_RELACION_CATEGORIA" EntitySet="PT_RELACION_CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_proveedor13" Association="Self.Reft_proveedor13">
+            <End Role="AT_PROVEEDOR" EntitySet="AT_PROVEEDOR" />
+            <End Role="AT_DESCRIPCION" EntitySet="AT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_rol_usuario18" Association="Self.Reft_rol_usuario18">
+            <End Role="UT_ROL" EntitySet="UT_ROL" />
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_tipo_baja15" Association="Self.Reft_tipo_baja15">
+            <End Role="BT_TIPO" EntitySet="BT_TIPO" />
+            <End Role="BT_DESCRIPCION" EntitySet="BT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_tipo_unidad4" Association="Self.Reft_tipo_unidad4">
+            <End Role="PT_TIPO_UNIDAD" EntitySet="PT_TIPO_UNIDAD" />
+            <End Role="PT_UNIDAD" EntitySet="PT_UNIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_unidad9" Association="Self.Reft_unidad9">
+            <End Role="PT_UNIDAD" EntitySet="PT_UNIDAD" />
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_usuario16" Association="Self.Reft_usuario16">
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+            <End Role="UT_DESCRIPCION" EntitySet="UT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_usuario19" Association="Self.Reft_usuario19">
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_usuario20" Association="Self.Reft_usuario20">
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AMABISCAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PC_ALTA" />
+          </Key>
+          <Property Name="PC_ALTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="F_CREACION" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RC_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="RC_PROVEEDOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PT_DESCRIPCION" Relationship="Self.Reft_producto12" FromRole="AT_DESCRIPCION" ToRole="PT_DESCRIPCION" />
+          <NavigationProperty Name="AT_PROVEEDOR" Relationship="Self.Reft_proveedor13" FromRole="AT_DESCRIPCION" ToRole="AT_PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="AT_PROVEEDOR">
+          <Key>
+            <PropertyRef Name="PC_PROVEEDOR" />
+          </Key>
+          <Property Name="PC_PROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AT_DESCRIPCION" Relationship="Self.Reft_proveedor13" FromRole="AT_PROVEEDOR" ToRole="AT_DESCRIPCION" />
+        </EntityType>
+        <EntityType Name="BT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PC_BAJA" />
+          </Key>
+          <Property Name="PC_BAJA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DETALLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="F_CREACION" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RC_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="RC_TIPO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PT_DESCRIPCION" Relationship="Self.Reft_producto14" FromRole="BT_DESCRIPCION" ToRole="PT_DESCRIPCION" />
+          <NavigationProperty Name="BT_TIPO" Relationship="Self.Reft_tipo_baja15" FromRole="BT_DESCRIPCION" ToRole="BT_TIPO" />
+        </EntityType>
+        <EntityType Name="BT_TIPO">
+          <Key>
+            <PropertyRef Name="PC_TIPO" />
+          </Key>
+          <Property Name="PC_TIPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BT_DESCRIPCION" Relationship="Self.Reft_tipo_baja15" FromRole="BT_TIPO" ToRole="BT_DESCRIPCION" />
+        </EntityType>
+        <EntityType Name="IT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PRC_PRODUCTO" />
+            <PropertyRef Name="PF_ESTADO" />
+          </Key>
+          <Property Name="PRC_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="PF_ESTADO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EXISTENCIA" Type="Int32" Nullable="false" />
+          <Property Name="CANTIDAD_BAJA" Type="Int32" Nullable="false" />
+          <Property Name="CANTIDAD_ALTA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PT_DESCRIPCION" Relationship="Self.Reft_producto24" FromRole="IT_DESCRIPCION" ToRole="PT_DESCRIPCION" />
+        </EntityType>
+        <EntityType Name="OT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PRC_ORDEN" />
+            <PropertyRef Name="PRC_PRODUCTO" />
+          </Key>
+          <Property Name="PRC_ORDEN" Type="Int32" Nullable="false" />
+          <Property Name="PRC_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="CONDICION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="OT_IDENTIFICACION" Relationship="Self.Reft_orden10" FromRole="OT_DESCRIPCION" ToRole="OT_IDENTIFICACION" />
+          <NavigationProperty Name="PT_DESCRIPCION" Relationship="Self.Reft_producto11" FromRole="OT_DESCRIPCION" ToRole="PT_DESCRIPCION" />
+        </EntityType>
+        <EntityType Name="OT_ENVIO">
+          <Key>
+            <PropertyRef Name="PC_ENVIO" />
+          </Key>
+          <Property Name="PC_ENVIO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OT_IDENTIFICACION" Relationship="Self.Reft_envio22" FromRole="OT_ENVIO" ToRole="OT_IDENTIFICACION" />
+        </EntityType>
+        <EntityType Name="OT_ESTADO">
+          <Key>
+            <PropertyRef Name="PC_ESTADO" />
+          </Key>
+          <Property Name="PC_ESTADO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OT_IDENTIFICACION" Relationship="Self.Reft_estado21" FromRole="OT_ESTADO" ToRole="OT_IDENTIFICACION" />
+        </EntityType>
+        <EntityType Name="OT_IDENTIFICACION">
+          <Key>
+            <PropertyRef Name="PC_ORDEN" />
+          </Key>
+          <Property Name="PC_ORDEN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_EMISION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RC_CLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="RC_EMISOR" Type="Int32" Nullable="false" />
+          <Property Name="RC_ESTADO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RC_ENVIO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OT_DESCRIPCION" Relationship="Self.Reft_orden10" FromRole="OT_IDENTIFICACION" ToRole="OT_DESCRIPCION" />
+          <NavigationProperty Name="OT_ENVIO" Relationship="Self.Reft_envio22" FromRole="OT_IDENTIFICACION" ToRole="OT_ENVIO" />
+          <NavigationProperty Name="OT_ESTADO" Relationship="Self.Reft_estado21" FromRole="OT_IDENTIFICACION" ToRole="OT_ESTADO" />
+          <NavigationProperty Name="UT_CUENTA" Relationship="Self.Reft_usuario19" FromRole="OT_IDENTIFICACION" ToRole="UT_CUENTA" />
+          <NavigationProperty Name="UT_CUENTA1" Relationship="Self.Reft_usuario20" FromRole="OT_IDENTIFICACION" ToRole="UT_CUENTA" />
+        </EntityType>
+        <EntityType Name="PT_CATEGORIA">
+          <Key>
+            <PropertyRef Name="PC_CATEGORIA" />
+          </Key>
+          <Property Name="PC_CATEGORIA" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RC_CATEGORIA_PADRE" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMAGEN" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="PT_CATEGORIA1" Relationship="Self.Reft_categoria5" FromRole="PT_CATEGORIA" ToRole="PT_CATEGORIA1" />
+          <NavigationProperty Name="PT_CATEGORIA2" Relationship="Self.Reft_categoria5" FromRole="PT_CATEGORIA1" ToRole="PT_CATEGORIA" />
+          <NavigationProperty Name="PT_DESCRIPCION" Relationship="Self.PT_RELACION_CATEGORIA" FromRole="PT_CATEGORIA" ToRole="PT_DESCRIPCION" />
+        </EntityType>
+        <EntityType Name="PT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PC_PRODUCTO" />
+          </Key>
+          <Property Name="PC_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMAGEN" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="RC_UNIDAD" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AT_DESCRIPCION" Relationship="Self.Reft_producto12" FromRole="PT_DESCRIPCION" ToRole="AT_DESCRIPCION" />
+          <NavigationProperty Name="BT_DESCRIPCION" Relationship="Self.Reft_producto14" FromRole="PT_DESCRIPCION" ToRole="BT_DESCRIPCION" />
+          <NavigationProperty Name="IT_DESCRIPCION" Relationship="Self.Reft_producto24" FromRole="PT_DESCRIPCION" ToRole="IT_DESCRIPCION" />
+          <NavigationProperty Name="OT_DESCRIPCION" Relationship="Self.Reft_producto11" FromRole="PT_DESCRIPCION" ToRole="OT_DESCRIPCION" />
+          <NavigationProperty Name="PT_UNIDAD" Relationship="Self.Reft_unidad9" FromRole="PT_DESCRIPCION" ToRole="PT_UNIDAD" />
+          <NavigationProperty Name="PT_CATEGORIA" Relationship="Self.PT_RELACION_CATEGORIA" FromRole="PT_DESCRIPCION" ToRole="PT_CATEGORIA" />
+        </EntityType>
+        <EntityType Name="PT_TIPO_UNIDAD">
+          <Key>
+            <PropertyRef Name="PC_TIPO_UNIDAD" />
+          </Key>
+          <Property Name="PC_TIPO_UNIDAD" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PT_UNIDAD" Relationship="Self.Reft_tipo_unidad4" FromRole="PT_TIPO_UNIDAD" ToRole="PT_UNIDAD" />
+        </EntityType>
+        <EntityType Name="PT_UNIDAD">
+          <Key>
+            <PropertyRef Name="PC_UNIDAD" />
+          </Key>
+          <Property Name="PC_UNIDAD" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RC_TIPO_UNIDAD" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PT_DESCRIPCION" Relationship="Self.Reft_unidad9" FromRole="PT_UNIDAD" ToRole="PT_DESCRIPCION" />
+          <NavigationProperty Name="PT_TIPO_UNIDAD" Relationship="Self.Reft_tipo_unidad4" FromRole="PT_UNIDAD" ToRole="PT_TIPO_UNIDAD" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UT_CUENTA">
+          <Key>
+            <PropertyRef Name="PC_CUENTA" />
+          </Key>
+          <Property Name="PC_CUENTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RC_ROL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OT_IDENTIFICACION" Relationship="Self.Reft_usuario19" FromRole="UT_CUENTA" ToRole="OT_IDENTIFICACION" />
+          <NavigationProperty Name="OT_IDENTIFICACION1" Relationship="Self.Reft_usuario20" FromRole="UT_CUENTA" ToRole="OT_IDENTIFICACION" />
+          <NavigationProperty Name="UT_ROL" Relationship="Self.Reft_rol_usuario18" FromRole="UT_CUENTA" ToRole="UT_ROL" />
+          <NavigationProperty Name="UT_DESCRIPCION" Relationship="Self.Reft_usuario16" FromRole="UT_CUENTA" ToRole="UT_DESCRIPCION" />
+        </EntityType>
+        <EntityType Name="UT_DESCRIPCION">
+          <Key>
+            <PropertyRef Name="PRC_USUARIO" />
+          </Key>
+          <Property Name="PRC_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_NACIMIENTO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UT_CUENTA" Relationship="Self.Reft_usuario16" FromRole="UT_DESCRIPCION" ToRole="UT_CUENTA" />
+        </EntityType>
+        <EntityType Name="UT_ROL">
+          <Key>
+            <PropertyRef Name="PC_ROL" />
+          </Key>
+          <Property Name="PC_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERMISO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UT_CUENTA" Relationship="Self.Reft_rol_usuario18" FromRole="UT_ROL" ToRole="UT_CUENTA" />
+        </EntityType>
+        <Association Name="Reft_producto12">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="AT_DESCRIPCION" Type="Self.AT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="AT_DESCRIPCION">
+              <PropertyRef Name="RC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_proveedor13">
+          <End Role="AT_PROVEEDOR" Type="Self.AT_PROVEEDOR" Multiplicity="1" />
+          <End Role="AT_DESCRIPCION" Type="Self.AT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AT_PROVEEDOR">
+              <PropertyRef Name="PC_PROVEEDOR" />
+            </Principal>
+            <Dependent Role="AT_DESCRIPCION">
+              <PropertyRef Name="RC_PROVEEDOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto14">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="BT_DESCRIPCION" Type="Self.BT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="BT_DESCRIPCION">
+              <PropertyRef Name="RC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_tipo_baja15">
+          <End Role="BT_TIPO" Type="Self.BT_TIPO" Multiplicity="1" />
+          <End Role="BT_DESCRIPCION" Type="Self.BT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BT_TIPO">
+              <PropertyRef Name="PC_TIPO" />
+            </Principal>
+            <Dependent Role="BT_DESCRIPCION">
+              <PropertyRef Name="RC_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto24">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="IT_DESCRIPCION" Type="Self.IT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="IT_DESCRIPCION">
+              <PropertyRef Name="PRC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_orden10">
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="1" />
+          <End Role="OT_DESCRIPCION" Type="Self.OT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT_IDENTIFICACION">
+              <PropertyRef Name="PC_ORDEN" />
+            </Principal>
+            <Dependent Role="OT_DESCRIPCION">
+              <PropertyRef Name="PRC_ORDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_producto11">
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="1" />
+          <End Role="OT_DESCRIPCION" Type="Self.OT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_DESCRIPCION">
+              <PropertyRef Name="PC_PRODUCTO" />
+            </Principal>
+            <Dependent Role="OT_DESCRIPCION">
+              <PropertyRef Name="PRC_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_envio22">
+          <End Role="OT_ENVIO" Type="Self.OT_ENVIO" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT_ENVIO">
+              <PropertyRef Name="PC_ENVIO" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_ENVIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_estado21">
+          <End Role="OT_ESTADO" Type="Self.OT_ESTADO" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT_ESTADO">
+              <PropertyRef Name="PC_ESTADO" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_usuario19">
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UT_CUENTA">
+              <PropertyRef Name="PC_CUENTA" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_usuario20">
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="1" />
+          <End Role="OT_IDENTIFICACION" Type="Self.OT_IDENTIFICACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UT_CUENTA">
+              <PropertyRef Name="PC_CUENTA" />
+            </Principal>
+            <Dependent Role="OT_IDENTIFICACION">
+              <PropertyRef Name="RC_EMISOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_categoria5">
+          <End Role="PT_CATEGORIA" Type="Self.PT_CATEGORIA" Multiplicity="0..1" />
+          <End Role="PT_CATEGORIA1" Type="Self.PT_CATEGORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_CATEGORIA">
+              <PropertyRef Name="PC_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PT_CATEGORIA1">
+              <PropertyRef Name="RC_CATEGORIA_PADRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_unidad9">
+          <End Role="PT_UNIDAD" Type="Self.PT_UNIDAD" Multiplicity="1" />
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_UNIDAD">
+              <PropertyRef Name="PC_UNIDAD" />
+            </Principal>
+            <Dependent Role="PT_DESCRIPCION">
+              <PropertyRef Name="RC_UNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_tipo_unidad4">
+          <End Role="PT_TIPO_UNIDAD" Type="Self.PT_TIPO_UNIDAD" Multiplicity="1" />
+          <End Role="PT_UNIDAD" Type="Self.PT_UNIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PT_TIPO_UNIDAD">
+              <PropertyRef Name="PC_TIPO_UNIDAD" />
+            </Principal>
+            <Dependent Role="PT_UNIDAD">
+              <PropertyRef Name="RC_TIPO_UNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_rol_usuario18">
+          <End Role="UT_ROL" Type="Self.UT_ROL" Multiplicity="1" />
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UT_ROL">
+              <PropertyRef Name="PC_ROL" />
+            </Principal>
+            <Dependent Role="UT_CUENTA">
+              <PropertyRef Name="RC_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reft_usuario16">
+          <End Role="UT_CUENTA" Type="Self.UT_CUENTA" Multiplicity="1" />
+          <End Role="UT_DESCRIPCION" Type="Self.UT_DESCRIPCION" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UT_CUENTA">
+              <PropertyRef Name="PC_CUENTA" />
+            </Principal>
+            <Dependent Role="UT_DESCRIPCION">
+              <PropertyRef Name="PRC_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PT_RELACION_CATEGORIA">
+          <End Role="PT_CATEGORIA" Type="Self.PT_CATEGORIA" Multiplicity="*" />
+          <End Role="PT_DESCRIPCION" Type="Self.PT_DESCRIPCION" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AMABISCAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AT_DESCRIPCION" EntityType="Self.AT_DESCRIPCION" />
+          <EntitySet Name="AT_PROVEEDOR" EntityType="Self.AT_PROVEEDOR" />
+          <EntitySet Name="BT_DESCRIPCION" EntityType="Self.BT_DESCRIPCION" />
+          <EntitySet Name="BT_TIPO" EntityType="Self.BT_TIPO" />
+          <EntitySet Name="IT_DESCRIPCION" EntityType="Self.IT_DESCRIPCION" />
+          <EntitySet Name="OT_DESCRIPCION" EntityType="Self.OT_DESCRIPCION" />
+          <EntitySet Name="OT_ENVIO" EntityType="Self.OT_ENVIO" />
+          <EntitySet Name="OT_ESTADO" EntityType="Self.OT_ESTADO" />
+          <EntitySet Name="OT_IDENTIFICACION" EntityType="Self.OT_IDENTIFICACION" />
+          <EntitySet Name="PT_CATEGORIA" EntityType="Self.PT_CATEGORIA" />
+          <EntitySet Name="PT_DESCRIPCION" EntityType="Self.PT_DESCRIPCION" />
+          <EntitySet Name="PT_TIPO_UNIDAD" EntityType="Self.PT_TIPO_UNIDAD" />
+          <EntitySet Name="PT_UNIDAD" EntityType="Self.PT_UNIDAD" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UT_CUENTA" EntityType="Self.UT_CUENTA" />
+          <EntitySet Name="UT_DESCRIPCION" EntityType="Self.UT_DESCRIPCION" />
+          <EntitySet Name="UT_ROL" EntityType="Self.UT_ROL" />
+          <AssociationSet Name="Reft_producto12" Association="Self.Reft_producto12">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="AT_DESCRIPCION" EntitySet="AT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_proveedor13" Association="Self.Reft_proveedor13">
+            <End Role="AT_PROVEEDOR" EntitySet="AT_PROVEEDOR" />
+            <End Role="AT_DESCRIPCION" EntitySet="AT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto14" Association="Self.Reft_producto14">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="BT_DESCRIPCION" EntitySet="BT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_tipo_baja15" Association="Self.Reft_tipo_baja15">
+            <End Role="BT_TIPO" EntitySet="BT_TIPO" />
+            <End Role="BT_DESCRIPCION" EntitySet="BT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto24" Association="Self.Reft_producto24">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="IT_DESCRIPCION" EntitySet="IT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_orden10" Association="Self.Reft_orden10">
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+            <End Role="OT_DESCRIPCION" EntitySet="OT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_producto11" Association="Self.Reft_producto11">
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+            <End Role="OT_DESCRIPCION" EntitySet="OT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_envio22" Association="Self.Reft_envio22">
+            <End Role="OT_ENVIO" EntitySet="OT_ENVIO" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_estado21" Association="Self.Reft_estado21">
+            <End Role="OT_ESTADO" EntitySet="OT_ESTADO" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_usuario19" Association="Self.Reft_usuario19">
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_usuario20" Association="Self.Reft_usuario20">
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+            <End Role="OT_IDENTIFICACION" EntitySet="OT_IDENTIFICACION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_categoria5" Association="Self.Reft_categoria5">
+            <End Role="PT_CATEGORIA" EntitySet="PT_CATEGORIA" />
+            <End Role="PT_CATEGORIA1" EntitySet="PT_CATEGORIA" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_unidad9" Association="Self.Reft_unidad9">
+            <End Role="PT_UNIDAD" EntitySet="PT_UNIDAD" />
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_tipo_unidad4" Association="Self.Reft_tipo_unidad4">
+            <End Role="PT_TIPO_UNIDAD" EntitySet="PT_TIPO_UNIDAD" />
+            <End Role="PT_UNIDAD" EntitySet="PT_UNIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_rol_usuario18" Association="Self.Reft_rol_usuario18">
+            <End Role="UT_ROL" EntitySet="UT_ROL" />
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+          </AssociationSet>
+          <AssociationSet Name="Reft_usuario16" Association="Self.Reft_usuario16">
+            <End Role="UT_CUENTA" EntitySet="UT_CUENTA" />
+            <End Role="UT_DESCRIPCION" EntitySet="UT_DESCRIPCION" />
+          </AssociationSet>
+          <AssociationSet Name="PT_RELACION_CATEGORIA" Association="Self.PT_RELACION_CATEGORIA">
+            <End Role="PT_CATEGORIA" EntitySet="PT_CATEGORIA" />
+            <End Role="PT_DESCRIPCION" EntitySet="PT_DESCRIPCION" />
+          </AssociationSet>
+          <FunctionImport Name="P_AGREGAR_ROL">
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="PERMISO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="P_CLIENTES_RECURRENTES" ReturnType="Collection(AMABISCAModel.P_CLIENTES_RECURRENTES_Result)">
+            <Parameter Name="LIMITE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="P_INVENTARIO_PERIODO" ReturnType="Collection(AMABISCAModel.P_INVENTARIO_PERIODO_Result)">
+            <Parameter Name="FECHAMIN" Mode="In" Type="DateTime" />
+            <Parameter Name="FECHAMAX" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="P_PRODUCTOS_SOLICITADOS" ReturnType="Collection(AMABISCAModel.P_PRODUCTOS_SOLICITADOS_Result)">
+            <Parameter Name="LIMITE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="P_VENTAS_PERIODO" ReturnType="Collection(AMABISCAModel.P_VENTAS_PERIODO_Result)">
+            <Parameter Name="FECHAMIN" Mode="In" Type="DateTime" />
+            <Parameter Name="FECHAMAX" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AMABISCAModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AMABISCAModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="P_CLIENTES_RECURRENTES_Result">
+          <Property Type="String" Name="CLIENTE" Nullable="false" MaxLength="53" />
+          <Property Type="Int32" Name="NUM_ORDENES" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="P_INVENTARIO_PERIODO_Result">
+          <Property Type="Int32" Name="COD_PRODUCTO" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="EXISTENCIAS" Nullable="true" />
+          <Property Type="Int32" Name="BAJAS" Nullable="true" />
+          <Property Type="Int32" Name="ALTAS" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="P_PRODUCTOS_SOLICITADOS_Result">
+          <Property Type="Int32" Name="COD_PRODUCTO" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="VENTAS" Nullable="true" />
+          <Property Type="Decimal" Name="PRECIO_UNITARIO" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="TOTAL" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="P_VENTAS_PERIODO_Result">
+          <Property Type="Int32" Name="COD_PRODUCTO" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="VENTAS" Nullable="true" />
+          <Property Type="Decimal" Name="PRECIO_UNITARIO" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="TOTAL" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AMABISCAModelStoreContainer" CdmEntityContainer="AMABISCAEntities">
+          <EntitySetMapping Name="AT_DESCRIPCION">
+            <EntityTypeMapping TypeName="AMABISCAModel.AT_DESCRIPCION">
+              <MappingFragment StoreEntitySet="AT_DESCRIPCION">
+                <ScalarProperty Name="PC_ALTA" ColumnName="PC_ALTA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="F_CREACION" ColumnName="F_CREACION" />
+                <ScalarProperty Name="RC_PRODUCTO" ColumnName="RC_PRODUCTO" />
+                <ScalarProperty Name="RC_PROVEEDOR" ColumnName="RC_PROVEEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AT_PROVEEDOR">
+            <EntityTypeMapping TypeName="AMABISCAModel.AT_PROVEEDOR">
+              <MappingFragment StoreEntitySet="AT_PROVEEDOR">
+                <ScalarProperty Name="PC_PROVEEDOR" ColumnName="PC_PROVEEDOR" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BT_DESCRIPCION">
+            <EntityTypeMapping TypeName="AMABISCAModel.BT_DESCRIPCION">
+              <MappingFragment StoreEntitySet="BT_DESCRIPCION">
+                <ScalarProperty Name="PC_BAJA" ColumnName="PC_BAJA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+                <ScalarProperty Name="F_CREACION" ColumnName="F_CREACION" />
+                <ScalarProperty Name="RC_PRODUCTO" ColumnName="RC_PRODUCTO" />
+                <ScalarProperty Name="RC_TIPO" ColumnName="RC_TIPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BT_TIPO">
+            <EntityTypeMapping TypeName="AMABISCAModel.BT_TIPO">
+              <MappingFragment StoreEntitySet="BT_TIPO">
+                <ScalarProperty Name="PC_TIPO" ColumnName="PC_TIPO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IT_DESCRIPCION">
+            <EntityTypeMapping TypeName="AMABISCAModel.IT_DESCRIPCION">
+              <MappingFragment StoreEntitySet="IT_DESCRIPCION">
+                <ScalarProperty Name="PRC_PRODUCTO" ColumnName="PRC_PRODUCTO" />
+                <ScalarProperty Name="PF_ESTADO" ColumnName="PF_ESTADO" />
+                <ScalarProperty Name="EXISTENCIA" ColumnName="EXISTENCIA" />
+                <ScalarProperty Name="CANTIDAD_BAJA" ColumnName="CANTIDAD_BAJA" />
+                <ScalarProperty Name="CANTIDAD_ALTA" ColumnName="CANTIDAD_ALTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OT_DESCRIPCION">
+            <EntityTypeMapping TypeName="AMABISCAModel.OT_DESCRIPCION">
+              <MappingFragment StoreEntitySet="OT_DESCRIPCION">
+                <ScalarProperty Name="PRC_ORDEN" ColumnName="PRC_ORDEN" />
+                <ScalarProperty Name="PRC_PRODUCTO" ColumnName="PRC_PRODUCTO" />
+                <ScalarProperty Name="CONDICION" ColumnName="CONDICION" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OT_ENVIO">
+            <EntityTypeMapping TypeName="AMABISCAModel.OT_ENVIO">
+              <MappingFragment StoreEntitySet="OT_ENVIO">
+                <ScalarProperty Name="PC_ENVIO" ColumnName="PC_ENVIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OT_ESTADO">
+            <EntityTypeMapping TypeName="AMABISCAModel.OT_ESTADO">
+              <MappingFragment StoreEntitySet="OT_ESTADO">
+                <ScalarProperty Name="PC_ESTADO" ColumnName="PC_ESTADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OT_IDENTIFICACION">
+            <EntityTypeMapping TypeName="AMABISCAModel.OT_IDENTIFICACION">
+              <MappingFragment StoreEntitySet="OT_IDENTIFICACION">
+                <ScalarProperty Name="PC_ORDEN" ColumnName="PC_ORDEN" />
+                <ScalarProperty Name="F_EMISION" ColumnName="F_EMISION" />
+                <ScalarProperty Name="RC_CLIENTE" ColumnName="RC_CLIENTE" />
+                <ScalarProperty Name="RC_EMISOR" ColumnName="RC_EMISOR" />
+                <ScalarProperty Name="RC_ESTADO" ColumnName="RC_ESTADO" />
+                <ScalarProperty Name="RC_ENVIO" ColumnName="RC_ENVIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PT_CATEGORIA">
+            <EntityTypeMapping TypeName="AMABISCAModel.PT_CATEGORIA">
+              <MappingFragment StoreEntitySet="PT_CATEGORIA">
+                <ScalarProperty Name="PC_CATEGORIA" ColumnName="PC_CATEGORIA" />
+                <ScalarProperty Name="RC_CATEGORIA_PADRE" ColumnName="RC_CATEGORIA_PADRE" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PT_DESCRIPCION">
+            <EntityTypeMapping TypeName="AMABISCAModel.PT_DESCRIPCION">
+              <MappingFragment StoreEntitySet="PT_DESCRIPCION">
+                <ScalarProperty Name="PC_PRODUCTO" ColumnName="PC_PRODUCTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="RC_UNIDAD" ColumnName="RC_UNIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PT_TIPO_UNIDAD">
+            <EntityTypeMapping TypeName="AMABISCAModel.PT_TIPO_UNIDAD">
+              <MappingFragment StoreEntitySet="PT_TIPO_UNIDAD">
+                <ScalarProperty Name="PC_TIPO_UNIDAD" ColumnName="PC_TIPO_UNIDAD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PT_UNIDAD">
+            <EntityTypeMapping TypeName="AMABISCAModel.PT_UNIDAD">
+              <MappingFragment StoreEntitySet="PT_UNIDAD">
+                <ScalarProperty Name="PC_UNIDAD" ColumnName="PC_UNIDAD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="RC_TIPO_UNIDAD" ColumnName="RC_TIPO_UNIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AMABISCAModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UT_CUENTA">
+            <EntityTypeMapping TypeName="AMABISCAModel.UT_CUENTA">
+              <MappingFragment StoreEntitySet="UT_CUENTA">
+                <ScalarProperty Name="PC_CUENTA" ColumnName="PC_CUENTA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="RC_ROL" ColumnName="RC_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UT_DESCRIPCION">
+            <EntityTypeMapping TypeName="AMABISCAModel.UT_DESCRIPCION">
+              <MappingFragment StoreEntitySet="UT_DESCRIPCION">
+                <ScalarProperty Name="PRC_USUARIO" ColumnName="PRC_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="F_NACIMIENTO" ColumnName="F_NACIMIENTO" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UT_ROL">
+            <EntityTypeMapping TypeName="AMABISCAModel.UT_ROL">
+              <MappingFragment StoreEntitySet="UT_ROL">
+                <ScalarProperty Name="PC_ROL" ColumnName="PC_ROL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PERMISO" ColumnName="PERMISO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PT_RELACION_CATEGORIA" TypeName="AMABISCAModel.PT_RELACION_CATEGORIA" StoreEntitySet="PT_RELACION_CATEGORIA">
+            <EndProperty Name="PT_CATEGORIA">
+              <ScalarProperty Name="PC_CATEGORIA" ColumnName="PRC_CATEGORIA" />
+            </EndProperty>
+            <EndProperty Name="PT_DESCRIPCION">
+              <ScalarProperty Name="PC_PRODUCTO" ColumnName="PRC_PRODUCTO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="P_AGREGAR_ROL" FunctionName="AMABISCAModel.Store.P_AGREGAR_ROL" />
+          <FunctionImportMapping FunctionImportName="P_CLIENTES_RECURRENTES" FunctionName="AMABISCAModel.Store.P_CLIENTES_RECURRENTES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.P_CLIENTES_RECURRENTES_Result">
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="NUM_ORDENES" ColumnName="NUM_ORDENES" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="P_INVENTARIO_PERIODO" FunctionName="AMABISCAModel.Store.P_INVENTARIO_PERIODO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.P_INVENTARIO_PERIODO_Result">
+                <ScalarProperty Name="COD_PRODUCTO" ColumnName="COD_PRODUCTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="EXISTENCIAS" ColumnName="EXISTENCIAS" />
+                <ScalarProperty Name="BAJAS" ColumnName="BAJAS" />
+                <ScalarProperty Name="ALTAS" ColumnName="ALTAS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="P_PRODUCTOS_SOLICITADOS" FunctionName="AMABISCAModel.Store.P_PRODUCTOS_SOLICITADOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.P_PRODUCTOS_SOLICITADOS_Result">
+                <ScalarProperty Name="COD_PRODUCTO" ColumnName="COD_PRODUCTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+                <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="P_VENTAS_PERIODO" FunctionName="AMABISCAModel.Store.P_VENTAS_PERIODO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.P_VENTAS_PERIODO_Result">
+                <ScalarProperty Name="COD_PRODUCTO" ColumnName="COD_PRODUCTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="VENTAS" ColumnName="VENTAS" />
+                <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="AMABISCAModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="AMABISCAModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="AMABISCAModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="AMABISCAModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="AMABISCAModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AMABISCAModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="AMABISCAModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

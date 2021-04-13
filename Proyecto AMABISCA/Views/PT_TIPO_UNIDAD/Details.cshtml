@@ -1,0 +1,26 @@
+﻿@model Proyecto_AMABISCA.Models.PT_TIPO_UNIDAD
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PT_TIPO_UNIDAD</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PC_TIPO_UNIDAD }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
