@@ -20,11 +20,16 @@ namespace Proyecto_AMABISCA
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+
+                    "~/Content/vendor/jquery/jquery.min.js",
+                    "~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                    
+
+                     "~/Content/vendor/bootstrap/css/bootstrap.min.css",
+
+                     "~/Content/css/shop-homepage.css"));
         }
     }
 }
