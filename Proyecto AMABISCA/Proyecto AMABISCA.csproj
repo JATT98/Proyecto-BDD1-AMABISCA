@@ -223,6 +223,8 @@
       <DependentUpon>AMABISCA.mdf</DependentUpon>
     </Content>
     <Content Include="Content\css\shop-homepage.css" />
+    <Content Include="Content\InicioSesion.css" />
+    <Content Include="Content\Registrar.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -305,6 +307,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
+    <Content Include="Views\Home\IniSesion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

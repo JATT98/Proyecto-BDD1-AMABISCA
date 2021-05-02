@@ -26,5 +26,17 @@ namespace Proyecto_AMABISCA.Controllers
 
             return View();
         }
+
+        public ActionResult Registro()
+        {
+           
+            return View();
+        }
+
+        public ActionResult IniSesion()
+        {
+
+            return View();
+        }
     }
 }

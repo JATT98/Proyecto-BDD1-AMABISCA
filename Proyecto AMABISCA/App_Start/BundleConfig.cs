@@ -29,7 +29,9 @@ namespace Proyecto_AMABISCA
 
                      "~/Content/vendor/bootstrap/css/bootstrap.min.css",
 
-                     "~/Content/css/shop-homepage.css"));
+                     "~/Content/css/shop-homepage.css",
+                     "~/Content/InicioSesion.css",
+                      "~/Content/Registrar.css"));
         }
     }
 }
