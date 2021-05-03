@@ -5,17 +5,73 @@
 
 
 
-<section class="form-register">
-    <h4>Formulario Registro</h4>
-    <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre">
-    <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido">
-     <input class="controls" type="text" name="usuario" id="usuario" placeholder="Ingres su nombre de usuario">
-    <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
-    <input class="controls" type="password" name="pass" id="pass" placeholder="Ingrese su Contraseña">
-    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-    <input class="botons" type="submit" value="Registrar">
-    <p><a href="#">¿Ya tengo Cuenta?</a></p>
-  </section>
+    <section class="form-register">
+        <h4>FORMULARIO DE REGISTRO</h4>
+        <div class="form-group row">
+            <label for="nombres" class="col-2 col-form-label">Nombres</label>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese sus Nombres">
+            </div>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus Apellidos">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="DNI" class="col-2 col-form-label">Contacto</label>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="DNI" id="DNI" placeholder="Ingrese su DNI">
+            </div>
+            <div class="col-md-5">
+                <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingrese su Teléfono">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="correo" class="col-2 col-form-label">Correo</label>
+            <div class="col-md-5">
+                <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="nacimiento" class="col-2 col-form-label">Fecha de nacimiento</label>
+            <div class="col-md-5">
+                <input class="controls" type="date" name="nacimiento" id="nacimiento">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="sexo" class="col-2 col-form-label">Género</label>
+            <div class="col-md-4">
+                <select class="controls" name="sexo" id="sexo">
+                    <option value="1">Masculino</option>
+                    <option value="2">Femenino</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="direccion" class="col-2 col-form-label">Dirección</label>
+            <div class="col-md-10">
+                <input class="controls" type="text" name="direccion" id="direccion" placeholder="Ingrese su Dirección">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="usuario" class="col-2 col-form-label">Cuenta</label>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="usuario" id="usuario" placeholder="Ingrese su Nombre de usuario">
+            </div>
+            <div class="col-md-5">
+                <input class="controls" type="password" name="pass" id="pass" placeholder="Ingrese su Contraseña">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label   for="registrar" name="terms" class="col-form-label col-7 align-content-end">
+                Al registrarse y utilizar el sistema para la gestión de ventas de AMABISCA, usted acepta que ha leído y conoce los <a class="stretched-link" href="https://github.com/JATT98/Proyecto-BDD1-AMABISCA">Terminos y Condiciones</a> para su uso.
+            </label>
+            <div class="col-md-5">
+                <input class="botons" id="registrar" type="submit" value="Registrar">
+                <p>@Html.ActionLink("¿Ya tengo Cuenta?", "IniSesion", "Home")</p>
+            </div>
+        </div>
+    </section>
 
 
 

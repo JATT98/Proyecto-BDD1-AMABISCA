@@ -1,17 +1,18 @@
 ﻿  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">AMABISCA</a>
+        <img src="~/images/icon.png" width="50" height="50"/>
+        <a margin="5px" class="navbar-brand" href="/">&nbspAMABISCA</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class ="px-3"> @Html.ActionLink("Inicio", "Index", "Home") </li>
-            <li class ="px-3"> @Html.ActionLink("Acerca de", "About", "Home") </li>
-            <li class ="px-3"> @Html.ActionLink("Contacto", "Contact", "Home") </li>
-            <li class ="px-3"> @Html.ActionLink("Registrarse", "Registro", "Home") </li>
-            <li class ="px-3"> @Html.ActionLink("Iniciar Sesion", "IniSesion", "Home") </li>
-        </ul>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index", "Home")">Inicio&nbsp&nbsp</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="@Url.Action("About", "Home")">Acerca de&nbsp&nbsp</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="@Url.Action("Contact", "Home")">Contacto&nbsp&nbsp</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="@Url.Action("Registro", "Home")">Registrarse&nbsp&nbsp</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="@Url.Action("IniSesion", "Home")">Iniciar Sesion&nbsp&nbsp</a> </li>
+          </ul>
       </div>
     </div>
   </nav>
