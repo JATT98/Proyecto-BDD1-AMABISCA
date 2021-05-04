@@ -1,0 +1,21 @@
+﻿.contenido {
+    max-width: 1200px;
+    margin-left: 350px;
+    margin-right: auto;
+    padding: 2em;
+    color: white;
+}
+
+
+.info-contacto {
+    background: #000;
+}
+
+    .info-contacto h4, .info-contacto ul, .info-contacto p {
+        text-align: justify;
+        margin: 0 0 1rem 0;
+    }
+
+.lo span{
+    color: #1f53c5;
+}

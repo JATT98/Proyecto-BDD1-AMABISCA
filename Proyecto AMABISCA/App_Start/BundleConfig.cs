@@ -32,7 +32,8 @@ namespace Proyecto_AMABISCA
                      "~/Content/css/shop-homepage.css",
                      "~/Content/InicioSesion.css",
                      "~/Content/Registrar.css",
-                     "~/Content/Contacto.css"));
+                     "~/Content/Contacto.css",
+                     "~/Content/AcercaDe.css"));
         }
     }
 }
