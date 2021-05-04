@@ -222,6 +222,7 @@
     <Content Include="App_Data\AMABISCA_log.ldf">
       <DependentUpon>AMABISCA.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Contacto.css" />
     <Content Include="Content\css\shop-homepage.css" />
     <Content Include="Content\InicioSesion.css" />
     <Content Include="Content\Registrar.css" />
