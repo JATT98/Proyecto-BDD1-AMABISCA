@@ -1,12 +1,23 @@
 ﻿@model Proyecto_AMABISCA.Models.AT_PROVEEDOR
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Delete</h2>
+<style>
+    .title {
+        margin-top: 50px;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
+    .form-register {
+        width: 600px;
+    }
+</style>
+
+<div class="container title logo">
+    <h2>DETALLES</h2>
+</div>
+
 <div>
     <h4>AT_PROVEEDOR</h4>
     <hr />
@@ -36,13 +47,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PC_PROVEEDOR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

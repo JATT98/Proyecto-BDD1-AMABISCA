@@ -10,17 +10,17 @@ using Proyecto_AMABISCA.Models;
 
 namespace Proyecto_AMABISCA.Controllers
 {
-    public class AT_PROVEEDORController : Controller
+    public class ProveedorController : Controller
     {
         private AMABISCAEntities db = new AMABISCAEntities();
 
-        // GET: AT_PROVEEDOR
+        // GET: Proveedor
         public ActionResult Index()
         {
             return View(db.AT_PROVEEDOR.ToList());
         }
 
-        // GET: AT_PROVEEDOR/Details/5
+        // GET: Proveedor/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace Proyecto_AMABISCA.Controllers
             return View(aT_PROVEEDOR);
         }
 
-        // GET: AT_PROVEEDOR/Create
+        // GET: Proveedor/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AT_PROVEEDOR/Create
+        // POST: Proveedor/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace Proyecto_AMABISCA.Controllers
             return View(aT_PROVEEDOR);
         }
 
-        // GET: AT_PROVEEDOR/Edit/5
+        // GET: Proveedor/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace Proyecto_AMABISCA.Controllers
             return View(aT_PROVEEDOR);
         }
 
-        // POST: AT_PROVEEDOR/Edit/5
+        // POST: Proveedor/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace Proyecto_AMABISCA.Controllers
             return View(aT_PROVEEDOR);
         }
 
-        // GET: AT_PROVEEDOR/Delete/5
+        // GET: Proveedor/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace Proyecto_AMABISCA.Controllers
             return View(aT_PROVEEDOR);
         }
 
-        // POST: AT_PROVEEDOR/Delete/5
+        // POST: Proveedor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

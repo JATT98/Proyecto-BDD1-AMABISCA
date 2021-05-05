@@ -125,8 +125,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AT_PROVEEDORController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\PT_TIPO_UNIDADController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -306,11 +306,11 @@
     <Content Include="Views\PT_TIPO_UNIDAD\Details.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Edit.cshtml" />
     <Content Include="Views\PT_TIPO_UNIDAD\Index.cshtml" />
-    <Content Include="Views\AT_PROVEEDOR\Create.cshtml" />
-    <Content Include="Views\AT_PROVEEDOR\Delete.cshtml" />
-    <Content Include="Views\AT_PROVEEDOR\Details.cshtml" />
-    <Content Include="Views\AT_PROVEEDOR\Edit.cshtml" />
-    <Content Include="Views\AT_PROVEEDOR\Index.cshtml" />
+    <Content Include="Views\Proveedor\Create.cshtml" />
+    <Content Include="Views\Proveedor\Delete.cshtml" />
+    <Content Include="Views\Proveedor\Details.cshtml" />
+    <Content Include="Views\Proveedor\Edit.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
