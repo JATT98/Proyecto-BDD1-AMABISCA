@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.PT_UNIDAD>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .floating-btn {
+        font-family: Arial;
+        width: 70px;
+        height: 70px;
+        background: #009879;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        display: flex;
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 70px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.25);
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        transition: background 0.25s;
+        outline: blue;
+        border: none;
+        cursor: pointer;
+    }
+
+        .floating-btn:active {
+            color: #ffffff;
+            background: #007D63;
+            text-decoration: none;
+        }
+
+        .floating-btn:hover {
+            color: #ffffff;
+            background: #007D63;
+            text-decoration: none;
+        }
+
+    .btn-primary {
+        background: #343a40;
+    }
+
+    .card {
+        margin-bottom: 0.75rem;
+    }
+
+    .title {
+        margin-top: 50px;
+    }
+</style>
+<div class="container title">
+    <h2>UNIDADES</h2>
+</div>
+
+<a type="btn" class="floating-btn" href="@Url.Action("Create")">+</a>
+
+<div class="container">
+    <div class="row justify-content-around">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <div class="card animated bounceInUp" style="width: 16rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.NOMBRE)</h4>
+                        <p class="card-text font-weight-light">
+                            @Html.DisplayFor(modelItem => item.PT_TIPO_UNIDAD.NOMBRE)
+                        </p>
+                    </div>
+                        <div class="card-footer d-flex">
+                            <a type="btn" class="btn btn-primary mx-auto" href="@Url.Action("Edit", new { id = item.PC_UNIDAD })">Editar</a>
+                            <a type="btn" class="btn btn-danger mx-auto" href="@Url.Action("Delete", new { id = item.PC_UNIDAD })">Eliminar</a>
+                        </div>
+
+                    
+
+                </div>
+
+            </div>
+        }
+</div>
+</div>

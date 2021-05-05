@@ -32,6 +32,7 @@
                         <p class="card-text font-weight-bold" style:"bold">Contacto:</p>
                         <p class="card-text">@Html.DisplayFor(model => model.TELEFONO)</p>
                     </div>
+
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
@@ -42,7 +43,7 @@
                             <input type="submit" value="ELIMINAR" class="btn btn-danger mx-auto" />
                         </div>
                     }
-                    
+
 
                 </div>
             </div>

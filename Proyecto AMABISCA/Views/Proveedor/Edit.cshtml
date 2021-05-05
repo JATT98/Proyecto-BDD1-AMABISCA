@@ -23,11 +23,11 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="container form-register">
-        <h4>PROVEEDOR</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.PC_PROVEEDOR)
+<div class="container form-register">
+    <h4>PROVEEDOR</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PC_PROVEEDOR)
 
     <div class="form-group">
         <label class="control-label col-md-4">RAZÓN SOCIAL</label>
@@ -52,15 +52,16 @@
             @Html.ValidationMessageFor(model => model.TELEFONO, "", new { @class = "text-danger" })
         </div>
     </div>
+    <hr />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-12 justify-content-around d-flex">
-                <input type="submit" value="GUARDAR" class="btn btn-primary col-5" />
-                <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-5">REGRESAR</a>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-12 justify-content-around d-flex">
+            <input type="submit" value="GUARDAR" class="btn btn-primary col-5" />
+            <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-5">REGRESAR</a>
 
-            </div>
         </div>
     </div>
+</div>
 }
 
 @section Scripts {

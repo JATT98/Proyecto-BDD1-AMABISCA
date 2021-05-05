@@ -1,0 +1,54 @@
+﻿@model Proyecto_AMABISCA.Models.PT_UNIDAD
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    .title {
+        margin-top: 50px;
+    }
+
+    .card {
+        margin-bottom: 0.75rem;
+    }
+
+    .form-register {
+        width: 600px;
+    }
+</style>
+
+<div class="container title logo">
+    <h3>¿Estás seguro de querer eliminar este registro?</h3>
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-around">
+
+        <div class="col-7">
+            <div class="card animated bounceInUp" style="width: 32rem;">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(model => model.NOMBRE)</h4>
+                    <p class="card-text font-weight-bold" style:"bold">Tipo de unidad:</p>
+                    <p class="card-text">@Html.DisplayFor(model => model.PT_TIPO_UNIDAD.NOMBRE)</p>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="card-footer d-flex">
+
+                        <a type="btn" class="btn btn-secondary mx-auto" href="@Url.Action("Index")">REGRESAR</a>
+                        <input type="submit" value="ELIMINAR" class="btn btn-danger mx-auto" />
+                    </div>
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
