@@ -1,0 +1,66 @@
+﻿@model Proyecto_AMABISCA.Models.BT_DESCRIPCION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BT_DESCRIPCION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DETALLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DETALLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.F_CREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_CREACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PT_DESCRIPCION.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PT_DESCRIPCION.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BT_TIPO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BT_TIPO.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PC_BAJA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

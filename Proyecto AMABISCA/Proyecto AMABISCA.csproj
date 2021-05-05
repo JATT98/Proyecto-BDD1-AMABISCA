@@ -125,9 +125,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AltasController.cs" />
+    <Compile Include="Controllers\BajasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\PT_TIPO_UNIDADController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,6 +321,26 @@
     <Content Include="Views\Unidades\Details.cshtml" />
     <Content Include="Views\Unidades\Edit.cshtml" />
     <Content Include="Views\Unidades\Index.cshtml" />
+    <Content Include="Views\Productos\Create.cshtml" />
+    <Content Include="Views\Productos\Delete.cshtml" />
+    <Content Include="Views\Productos\Details.cshtml" />
+    <Content Include="Views\Productos\Edit.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
+    <Content Include="Views\Altas\Create.cshtml" />
+    <Content Include="Views\Altas\Delete.cshtml" />
+    <Content Include="Views\Altas\Details.cshtml" />
+    <Content Include="Views\Altas\Edit.cshtml" />
+    <Content Include="Views\Altas\Index.cshtml" />
+    <Content Include="Views\Bajas\Create.cshtml" />
+    <Content Include="Views\Bajas\Delete.cshtml" />
+    <Content Include="Views\Bajas\Details.cshtml" />
+    <Content Include="Views\Bajas\Edit.cshtml" />
+    <Content Include="Views\Bajas\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
