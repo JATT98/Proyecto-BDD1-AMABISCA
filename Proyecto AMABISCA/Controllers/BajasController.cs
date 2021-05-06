@@ -15,10 +15,10 @@ namespace Proyecto_AMABISCA.Controllers
         private AMABISCAEntities db = new AMABISCAEntities();
 
         // GET: Bajas
-        public ActionResult Index()
+        public ActionResult Index(string SearchValue)
         {
             var bT_DESCRIPCION = db.BT_DESCRIPCION.Include(b => b.PT_DESCRIPCION).Include(b => b.BT_TIPO);
-            return View(bT_DESCRIPCION.ToList());
+            return View(bT_DESCRIPCION.Where(x => x.PT_DESCRIPCION.NOMBRE.Contains(SearchValue) || SearchValue == null).ToList());
         }
 
         // GET: Bajas/Details/5

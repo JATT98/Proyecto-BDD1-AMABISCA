@@ -1021,7 +1021,7 @@
             <Parameter Name="NOMBRE" Mode="In" Type="String" />
             <Parameter Name="PERMISO" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="P_CLIENTES_RECURRENTES" ReturnType="Collection(AMABISCAModel.P_CLIENTES_RECURRENTES_Result)">
+          <FunctionImport Name="P_CLIENTES_RECURRENTES" ReturnType="Collection(AMABISCAModel.P_CLIENTES_RECURRENTES_Result1)">
             <Parameter Name="LIMITE" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="P_INVENTARIO_PERIODO" ReturnType="Collection(AMABISCAModel.P_INVENTARIO_PERIODO_Result)">
@@ -1101,6 +1101,11 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="P_CLIENTES_RECURRENTES_Result1">
+          <Property Type="Int32" Name="PRC_USUARIO" Nullable="false" />
+          <Property Type="String" Name="CLIENTE" Nullable="false" MaxLength="53" />
+          <Property Type="Int32" Name="NUM_ORDENES" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1296,8 +1301,9 @@
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="P_AGREGAR_ROL" FunctionName="AMABISCAModel.Store.P_AGREGAR_ROL" />
           <FunctionImportMapping FunctionImportName="P_CLIENTES_RECURRENTES" FunctionName="AMABISCAModel.Store.P_CLIENTES_RECURRENTES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AMABISCAModel.P_CLIENTES_RECURRENTES_Result">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="AMABISCAModel.P_CLIENTES_RECURRENTES_Result1">
+                <ScalarProperty Name="PRC_USUARIO" ColumnName="PRC_USUARIO" />
                 <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
                 <ScalarProperty Name="NUM_ORDENES" ColumnName="NUM_ORDENES" />
               </ComplexTypeMapping>

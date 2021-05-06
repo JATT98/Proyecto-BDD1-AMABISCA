@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.Prroducto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .in {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="container">
+    <div class="container form-group row in d-flex" align="center">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Index", "Solicitados", FormMethod.Get))
+            {
+                @Html.TextBox("LIMITE")
+                <input class="col-3" type="submit" id="BtnBusqueda" value="Buscar" />
+            }
+        </div>
+        <div class="col-md-5">
+            @using (Html.BeginForm("Print", "Solicitados", FormMethod.Get))
+            {
+                @Html.TextBox("var")
+                <input class="col-3" type="submit" id="btn2" value="Imprimir" />
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table table-striped table-bordered dt-responsive nowrap">
+        <thead>
+            <tr height="50">
+                <td colspan="4" align="center"><h2>PRODUCTOS MÁS SOLICITADOS</h2></td>
+            </tr>
+            <tr align="center">
+                <th>
+                    PRODUCTO
+                </th>
+                <th>
+                    VENTAS
+                </th>
+                <th>
+                    PRECIO UNITARIO
+                </th>
+                <th>
+                    TOTAL
+                </th>
+            </tr>
+        </thead>
+        @if (Model.Count() == 0)
+        {
+            <tbody>
+                <tr>
+                    <td colspan="4" style="color:red">
+                        Criterio de busqueda no encontrado
+                    </td>
+                </tr>
+            </tbody>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VENTAS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRECIO_UNITARIO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TOTAL)
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

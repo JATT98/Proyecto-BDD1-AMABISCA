@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.Venta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .in {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="container form-group row in d-flex" align="center">
+        <div class="col-12">
+            @using (Html.BeginForm("Index", "Ventas", FormMethod.Get))
+            {
+                @Html.TextBox("date1")
+                @Html.TextBox("date2")
+
+                <input class="col-3" type="submit" id="BtnBusqueda" value="Buscar" />
+            }
+        </div>
+        <hr />
+        <div class="col-12">
+            @using (Html.BeginForm("Print", "Ventas", FormMethod.Get))
+            {
+                @Html.TextBox("var1")
+                @Html.TextBox("var2")
+
+                <input class="col-3" type="submit" id="btn2" value="Imprimir" />
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-striped table-bordered dt-responsive nowrap">
+        <thead>
+            <tr height="50">
+                <td colspan="4" align="center"><h2>VENTAS POR PERIODO</h2></td>
+            </tr>
+            <tr align="center">
+                <th>
+                    PRODUCTO
+                </th>
+                <th>
+                    VENTAS
+                </th>
+                <th>
+                    PRECIO UNITARIO
+                </th>
+                <th>
+                    TOTAL
+                </th>
+            </tr>
+        </thead>
+        
+            @foreach (var item in Model)
+            {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENTAS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRECIO_UNITARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTAL)
+        </td>
+    </tr>
+            }
+        
+    </table>
+</div>

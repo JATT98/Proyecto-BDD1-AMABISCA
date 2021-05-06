@@ -8,10 +8,30 @@
       <div class="col-lg-3">
 
         <h1 class="my-4">AMABISCA</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="@Url.Action("Index", "Unidades")" class="list-group-item">Unidades</a>
-          <a href="@Url.Action("Index", "Proveedor")" class="list-group-item">Proveedores</a>
+        <div class="list-group col-md-10">
+            <a href="@Url.Action("Index", "Roles")" class="list-group-item">Roles</a>
+            <a href="@Url.Action("Index", "Unidades")" class="list-group-item">Unidades</a>
+            <a href="@Url.Action("Index", "Proveedor")" class="list-group-item">Proveedores</a>
+            <div class="dropdown show dropright">
+                <a class="list-group-item dropdown-toggle" href="" role="button" id="Inventarios" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Inventarios
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Inventarios">
+                    <a href="@Url.Action("Index", "Altas")" class="dropdown-item">Altas</a>
+                    <a href="@Url.Action("Index", "Bajas")" class="dropdown-item">Bajas</a>
+                </div>
+            </div>
+            <div class="dropdown show dropright">
+                <a class="list-group-item dropdown-toggle" href="" role="button" id="Reportes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Reportes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Reportes">
+                    <a href="@Url.Action("Index", "Clientes")" class="dropdown-item">Clientes</a>
+                    <a href="@Url.Action("Index", "Inventario")" class="dropdown-item">Inventario</a>
+                    <a href="@Url.Action("Index", "Ventas")" class="dropdown-item">Venta de productos</a>
+                    <a href="@Url.Action("Index", "Solicitados")" class="dropdown-item">Productos más solicitados</a>
+                </div>
+            </div>
         </div>
 
       </div>

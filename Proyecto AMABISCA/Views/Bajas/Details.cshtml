@@ -3,64 +3,45 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>BT_DESCRIPCION</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CANTIDAD)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CANTIDAD)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PRECIO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PRECIO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DETALLE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DETALLE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.F_CREACION)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.F_CREACION)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PT_DESCRIPCION.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PT_DESCRIPCION.NOMBRE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BT_TIPO.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BT_TIPO.NOMBRE)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PC_BAJA }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <style>
+        .title {
+            margin-top: 50px;
+        }
+    </style>
+    <div class="container title logo">
+        <h2>DETALLES</h2>
+    </div>
+    <div class="container">
+        <div class="row justify-content-around">
+                <div class="col-8">
+                    <div class="card animated bounceInUp" style="width: 36rem;">
+                        <div class="card-body">
+                            <h4 class="card-title">@Html.DisplayFor(model => model.PT_DESCRIPCION.NOMBRE)</h4>
+                            <div class="form-group row" align="center">
+                                <div class="col-md-3">
+                                    <p class="card-text font-weight-bold" style:"bold">Cantidad:</p>
+                                    <p class="card-text font-weight-light">@Html.DisplayFor(model => model.CANTIDAD)</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="card-text font-weight-bold" style:"bold">Precio:</p>
+                                    <p class="card-text font-weight-light">@Html.DisplayFor(model => model.PRECIO)</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="card-text font-weight-bold" style:"bold">Fecha:</p>
+                                    <p class="card-text font-weight-light">@Html.ValueFor(model => model.F_CREACION, "{0:dd/MM/yyyy}")</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="card-text font-weight-bold" style:"bold">Tipo:</p>
+                                    <p class="card-text font-weight-light">@Html.DisplayFor(model => model.BT_TIPO.NOMBRE)</p>
+                                </div>
+                            </div>
+                                <p class="card-text font-weight-bold" style:"bold">Detalle:</p>
+                                <p class="card-text font-weight-light">@Html.DisplayFor(model => model.DETALLE)</p>
+                            </div>
+                        <div class="card-footer" align="center">
+                            <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-5">REGRESAR</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>

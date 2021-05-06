@@ -4,54 +4,126 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    .floating-btn {
+        font-family: Arial;
+        width: 70px;
+        height: 70px;
+        background: #009879;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        display: flex;
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 70px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.25);
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        transition: background 0.25s;
+        outline: blue;
+        border: none;
+        cursor: pointer;
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CANTIDAD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRECIO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.F_CREACION)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PT_DESCRIPCION.NOMBRE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AT_PROVEEDOR.RAZON_SOCIAL)
-        </th>
-        <th></th>
-    </tr>
+        .floating-btn:active {
+            color: #ffffff;
+            background: #007D63;
+            text-decoration: none;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CANTIDAD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PRECIO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.F_CREACION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PT_DESCRIPCION.NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AT_PROVEEDOR.RAZON_SOCIAL)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PC_ALTA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PC_ALTA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PC_ALTA })
-        </td>
-    </tr>
-}
+        .floating-btn:hover {
+            color: #ffffff;
+            background: #007D63;
+            text-decoration: none;
+        }
 
-</table>
+    .btn-primary {
+        background: #343a40;
+    }
+
+    .card {
+        margin-bottom: 0.75rem;
+    }
+
+    .title {
+        margin-top: 50px;
+    }
+    .in{
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<a type="btn" class="floating-btn" href="@Url.Action("Create")">+</a>
+<div class="container in">
+    @using (Html.BeginForm("Index", "Altas", FormMethod.Get))
+    {
+        @Html.TextBox("SearchValue")
+        <input type="submit" id="BtnBusqueda" value="Buscar" />
+    }
+</div>
+
+<div class="container">
+    <table class="table table-striped table-bordered dt-responsive nowrap">
+        <thead>
+            <tr height="50">
+                <td colspan="5" align="center"><h2>INVENTARIO DE ALTAS</h2></td>
+            </tr>
+            <tr align="center">
+                <th>
+                    PRODUCTO
+                </th>
+                <th>
+                    CANTIDAD
+                </th>
+                <th width="130px">
+                    COSTO
+                </th>
+                <th>
+                    PROVEEDOR
+                </th>
+                <th>
+                    FECHA
+                </th>
+            </tr>
+        </thead>
+
+        @if (Model.Count() == 0)
+        {
+            <tbody>
+                <tr>
+                    <td colspan="5" style="color:red">
+                        Criterio de busqueda no encontrado
+                    </td>
+                </tr>
+            </tbody>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PT_DESCRIPCION.NOMBRE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CANTIDAD)
+                    </td>
+                    <td>
+                        Q. @Html.DisplayFor(modelItem => item.PRECIO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AT_PROVEEDOR.RAZON_SOCIAL)
+                    </td>
+                    <td>
+                        @Html.ValueFor(modelItem => item.F_CREACION, "{0:dd/MM/yyyy}")
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+
+</div>

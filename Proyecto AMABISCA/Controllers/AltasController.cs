@@ -15,10 +15,10 @@ namespace Proyecto_AMABISCA.Controllers
         private AMABISCAEntities db = new AMABISCAEntities();
 
         // GET: Altas
-        public ActionResult Index()
+        public ActionResult Index(string SearchValue)
         {
             var aT_DESCRIPCION = db.AT_DESCRIPCION.Include(a => a.PT_DESCRIPCION).Include(a => a.AT_PROVEEDOR);
-            return View(aT_DESCRIPCION.ToList());
+            return View(aT_DESCRIPCION.Where(x => x.PT_DESCRIPCION.NOMBRE.Contains(SearchValue)||SearchValue == null).ToList());
         }
 
         // GET: Altas/Details/5

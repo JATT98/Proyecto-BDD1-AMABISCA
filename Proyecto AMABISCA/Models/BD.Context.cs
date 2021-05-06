@@ -58,13 +58,13 @@ namespace Proyecto_AMABISCA.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("P_AGREGAR_ROL", nOMBREParameter, pERMISOParameter);
         }
     
-        public virtual ObjectResult<P_CLIENTES_RECURRENTES_Result> P_CLIENTES_RECURRENTES(Nullable<int> lIMITE)
+        public virtual ObjectResult<P_CLIENTES_RECURRENTES_Result1> P_CLIENTES_RECURRENTES(Nullable<int> lIMITE)
         {
             var lIMITEParameter = lIMITE.HasValue ?
                 new ObjectParameter("LIMITE", lIMITE) :
                 new ObjectParameter("LIMITE", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<P_CLIENTES_RECURRENTES_Result>("P_CLIENTES_RECURRENTES", lIMITEParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<P_CLIENTES_RECURRENTES_Result1>("P_CLIENTES_RECURRENTES", lIMITEParameter);
         }
     
         public virtual ObjectResult<P_INVENTARIO_PERIODO_Result> P_INVENTARIO_PERIODO(Nullable<System.DateTime> fECHAMIN, Nullable<System.DateTime> fECHAMAX)
@@ -204,5 +204,21 @@ namespace Proyecto_AMABISCA.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.Cliente> Clientes { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.ViewClientes> ViewClientes { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.Venta> Ventas { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.ViewVentas> ViewVentas { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.Prroducto> Prroductoes { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.ViewProductos> ViewProductos { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.Inventario> Inventarios { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto_AMABISCA.Models.ViewInventario> ViewInventarios { get; set; }
     }
 }

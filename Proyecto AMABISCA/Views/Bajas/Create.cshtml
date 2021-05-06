@@ -4,19 +4,37 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<style>
+    .title {
+        margin-top: 50px;
+    }
+
+    .form-register {
+        width: 600px;
+    }
+</style>
+
+<div class="container title logo">
+    <h2>REGISTRO DE BAJA</h2>
+</div>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>BT_DESCRIPCION</h4>
-        <hr />
+
+    <div class="form-register container">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.CANTIDAD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-10">PRODUCTO</label>
+            <div class="col-md-12">
+                @Html.DropDownList("RC_PRODUCTO", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RC_PRODUCTO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-10">CANTIDAD</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CANTIDAD, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CANTIDAD, "", new { @class = "text-danger" })
@@ -24,48 +42,42 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PRECIO, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <label class="control-label col-md-10">COSTO</label>
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.PRECIO, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PRECIO, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DETALLE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <label class="control-label col-md-10">DETALLES</label>
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.DETALLE, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DETALLE, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.F_CREACION, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.F_CREACION, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.F_CREACION, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RC_PRODUCTO, "RC_PRODUCTO", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("RC_PRODUCTO", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.RC_PRODUCTO, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RC_TIPO, "RC_TIPO", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <label class="control-label col-md-10">TIPO</label>
+            <div class="col-md-12">
                 @Html.DropDownList("RC_TIPO", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RC_TIPO, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <label class="control-label col-md-10">FECHA</label>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.F_CREACION, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.F_CREACION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12 justify-content-around d-flex">
+                <input type="submit" value="CREAR" class="btn btn-primary col-5" />
+                <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-5">REGRESAR</a>
+
             </div>
         </div>
     </div>

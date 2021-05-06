@@ -53,6 +53,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -127,12 +130,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AltasController.cs" />
     <Compile Include="Controllers\BajasController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\PT_TIPO_UNIDADController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\SolicitadosController.cs" />
     <Compile Include="Controllers\UnidadesController.cs" />
+    <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +170,8 @@
     <Compile Include="Models\BT_TIPO.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Inventario.cs" />
     <Compile Include="Models\IT_DESCRIPCION.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -178,6 +187,7 @@
     <Compile Include="Models\OT_IDENTIFICACION.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Prroducto.cs" />
     <Compile Include="Models\PT_CATEGORIA.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -191,6 +201,9 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\P_CLIENTES_RECURRENTES_Result.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\P_CLIENTES_RECURRENTES_Result1.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\P_INVENTARIO_PERIODO_Result.cs">
@@ -220,6 +233,11 @@
     <Compile Include="Models\UT_ROL.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Venta.cs" />
+    <Compile Include="Models\ViewClientes.cs" />
+    <Compile Include="Models\ViewInventario.cs" />
+    <Compile Include="Models\ViewProductos.cs" />
+    <Compile Include="Models\ViewVentas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -279,8 +297,13 @@
     <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Content\vendor\jquery\jquery.min.map" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -313,12 +336,10 @@
     <Content Include="Views\PT_TIPO_UNIDAD\Index.cshtml" />
     <Content Include="Views\Proveedor\Create.cshtml" />
     <Content Include="Views\Proveedor\Delete.cshtml" />
-    <Content Include="Views\Proveedor\Details.cshtml" />
     <Content Include="Views\Proveedor\Edit.cshtml" />
     <Content Include="Views\Proveedor\Index.cshtml" />
     <Content Include="Views\Unidades\Create.cshtml" />
     <Content Include="Views\Unidades\Delete.cshtml" />
-    <Content Include="Views\Unidades\Details.cshtml" />
     <Content Include="Views\Unidades\Edit.cshtml" />
     <Content Include="Views\Unidades\Index.cshtml" />
     <Content Include="Views\Productos\Create.cshtml" />
@@ -327,20 +348,22 @@
     <Content Include="Views\Productos\Edit.cshtml" />
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Altas\Create.cshtml" />
-    <Content Include="Views\Altas\Delete.cshtml" />
-    <Content Include="Views\Altas\Details.cshtml" />
-    <Content Include="Views\Altas\Edit.cshtml" />
     <Content Include="Views\Altas\Index.cshtml" />
     <Content Include="Views\Bajas\Create.cshtml" />
-    <Content Include="Views\Bajas\Delete.cshtml" />
     <Content Include="Views\Bajas\Details.cshtml" />
-    <Content Include="Views\Bajas\Edit.cshtml" />
     <Content Include="Views\Bajas\Index.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Delete.cshtml" />
-    <Content Include="Views\Roles\Details.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Clientes\Report.cshtml" />
+    <Content Include="Views\Ventas\Index.cshtml" />
+    <Content Include="Views\Ventas\Report.cshtml" />
+    <Content Include="Views\Solicitados\Index.cshtml" />
+    <Content Include="Views\Solicitados\Report.cshtml" />
+    <Content Include="Views\Inventario\Index.cshtml" />
+    <Content Include="Views\Inventario\Report.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

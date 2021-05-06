@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.Inventario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .in {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="container form-group row in d-flex" align="center">
+        <div class="col-12">
+            @using (Html.BeginForm("Index", "Inventario", FormMethod.Get))
+            {
+                @Html.TextBox("date1")
+                @Html.TextBox("date2")
+
+                <input class="col-3" type="submit" id="BtnBusqueda" value="Buscar" />
+            }
+        </div>
+        <hr />
+        <div class="col-12">
+            @using (Html.BeginForm("Print", "Inventario", FormMethod.Get))
+            {
+                @Html.TextBox("var1")
+                @Html.TextBox("var2")
+
+                <input class="col-3" type="submit" id="btn2" value="Imprimir" />
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-striped table-bordered dt-responsive nowrap">
+        <thead>
+            <tr height="50">
+                <td colspan="4" align="center"><h2>INVENTARIO POR PERIODO</h2></td>
+            </tr>
+            <tr align="center">
+                <th>
+                    PRODUCTO
+                </th>
+                <th>
+                    EXISTENCIAS
+                </th>
+                <th>
+                    ALTAS
+                </th>
+                <th>
+                    BAJAS
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EXISTENCIAS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ALTAS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BAJAS)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
