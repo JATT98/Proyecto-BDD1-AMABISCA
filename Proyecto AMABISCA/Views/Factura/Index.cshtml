@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.OT_IDENTIFICACION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.F_EMISION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_ENVIO.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OT_ESTADO.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UT_CUENTA.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UT_CUENTA1.NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_EMISION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_ENVIO.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OT_ESTADO.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UT_CUENTA.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UT_CUENTA1.NOMBRE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PC_ORDEN }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PC_ORDEN }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PC_ORDEN })
+        </td>
+    </tr>
+}
+
+</table>

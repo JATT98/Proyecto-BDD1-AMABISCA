@@ -1,0 +1,58 @@
+﻿@model Proyecto_AMABISCA.Models.OT_IDENTIFICACION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OT_IDENTIFICACION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.F_EMISION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.F_EMISION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_ENVIO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_ENVIO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OT_ESTADO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OT_ESTADO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UT_CUENTA.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UT_CUENTA.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UT_CUENTA1.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UT_CUENTA1.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PC_ORDEN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -4,63 +4,43 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>PT_DESCRIPCION</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOMBRE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PRECIO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PRECIO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DESCRIPCION)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DESCRIPCION)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IMAGEN)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IMAGEN)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CANTIDAD)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CANTIDAD)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PT_UNIDAD.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PT_UNIDAD.NOMBRE)
-        </dd>
-
-    </dl>
+<style>
+    .title {
+        margin-top: 50px;
+    }
+</style>
+<div class="container title logo">
+    <h2>DETALLES</h2>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PC_PRODUCTO }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-8">
+            <div class="card animated bounceInUp" style="width: 40rem;">
+                <div class="card-body">
+                    <img class="card-img-top" src="@Url.Action("getImage","Productos",new { id = Model.PC_PRODUCTO})" alt="Card image" />
+                    <h4 class="card-title">@Html.DisplayFor(model => model.NOMBRE)</h4>
+                    <div class="form-group row" align="center">
+                        <div class="col-md-6">
+                            <p class="card-text font-weight-bold" style:"bold">Cantidad:</p>
+                            <p class="card-text font-weight-light">@Html.DisplayFor(model => model.CANTIDAD)</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-text font-weight-bold" style:"bold">Precio:</p>
+                            <p class="card-text font-weight-light">@Html.DisplayFor(model => model.PRECIO)/@Html.DisplayFor(model => model.PT_UNIDAD.NOMBRE)</p>
+                        </div>
+
+                    </div>
+                        <p class="card-text font-weight-bold" style:"bold">Descripción:</p>
+                        <p class="card-text font-weight-light">@Html.DisplayFor(model => model.DESCRIPCION)</p>
+                </div>
+                <div class="card-footer justify-content-around" align="center">
+                    <a type="btn" href="@Url.Action("Edit","Productos",new { id = Model.PC_PRODUCTO})" class="btn btn-primary col-3">EDITAR</a>
+                    <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-3">REGRESAR</a>
+                    <a type="btn" href="@Url.Action("Delete","Productos",new { id = Model.PC_PRODUCTO})" class="btn btn-danger col-3">ELIMINAR</a>
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
+

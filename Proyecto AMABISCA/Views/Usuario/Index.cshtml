@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Proyecto_AMABISCA.Models.PT_DESCRIPCION>
+﻿@model IEnumerable<Proyecto_AMABISCA.Models.UT_DESCRIPCION>
 
 @{
     ViewBag.Title = "Index";
@@ -52,10 +52,9 @@
     }
 </style>
 <div class="container title">
-    <h2>PRODUCTOS</h2>
+    <h2>CUENTAS</h2>
 </div>
 <a type="btn" class="floating-btn" href="@Url.Action("Create")">+</a>
-
 
 <div class="container">
     <div class="row justify-content-around">
@@ -63,15 +62,19 @@
         @foreach (var item in Model)
         {
             <div class="col-4">
-                <div  class="card animated bounceInUp" style="width: 16rem;">
-                    <img class="card-img-top" src="@Url.Action("getImage","Productos",new { id = item.PC_PRODUCTO})" alt="Card image" />
+                <div class="card animated bounceInUp" style="width: 16rem;">
+                    <img class="card-img-top" src="https://i.pravatar.cc/150?u=@Html.DisplayFor(modelItem => item.UT_CUENTA.NOMBRE)" alt="Card image" />
                     <div class="card-body">
-                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.NOMBRE)</h4>
-                        <p class="card-text font-weight-bold" style:"bold">Precio:</p>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.PRECIO)</p>
-                        <p class="card-text font-weight-bold" style:"bold">Descripción:</p>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.DESCRIPCION)</p>
-                        <a href="@Url.Action("Details", new { id = item.PC_PRODUCTO })" class="stretched-link"></a>
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.APELLIDO), @Html.DisplayFor(modelItem => item.NOMBRE)</h4>
+                        <p class="card-text font-weight-bold" style:"bold">DNI:</p>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.DNI)</p>
+                        <p class="card-text font-weight-bold" style:"bold">Teléfono:</p>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.TELEFONO)</p>
+                    </div>
+                    <div class="card-footer d-flex">
+                        <a type="btn" class="btn btn-primary mx-auto" href="@Url.Action("Edit", new { id = item.PRC_USUARIO })">Editar</a>
+                        <a type="btn" class="btn btn-secondary mx-auto" href="@Url.Action("Details", new { id = item.PRC_USUARIO })">Detalles</a>
+                        <a type="btn" class="btn btn-danger mx-auto" href="@Url.Action("Delete", new { id = item.PRC_USUARIO })">Eliminar</a>
                     </div>
 
                 </div>
@@ -81,6 +84,3 @@
     </div>
 
 </div>
-
-
-

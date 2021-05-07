@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Proyecto_AMABISCA.Models;
 
@@ -50,6 +54,11 @@ namespace Proyecto_AMABISCA.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PC_PRODUCTO,NOMBRE,PRECIO,DESCRIPCION,IMAGEN,CANTIDAD,RC_UNIDAD")] PT_DESCRIPCION pT_DESCRIPCION)
         {
+            HttpPostedFileBase FileBase = Request.Files[0];
+            //HttpFileCollectionBase collectionBase = Request.Files;
+            WebImage image = new WebImage(FileBase.InputStream);
+            pT_DESCRIPCION.IMAGEN = image.GetBytes();
+
             if (ModelState.IsValid)
             {
                 db.PT_DESCRIPCION.Add(pT_DESCRIPCION);
@@ -127,6 +136,21 @@ namespace Proyecto_AMABISCA.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        public ActionResult getImage(int id)
+        {
+            PT_DESCRIPCION productosK = db.PT_DESCRIPCION.Find(id);
+            byte[] byteImage = productosK.IMAGEN;
+            MemoryStream memoryStream = new MemoryStream(byteImage);
+            Image image = Image.FromStream(memoryStream);
+
+            memoryStream = new MemoryStream();
+            image.Save(memoryStream, ImageFormat.Png);
+            memoryStream.Position = 0;
+
+            return File(memoryStream, "image/png");
         }
     }
 }

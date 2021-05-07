@@ -1,4 +1,4 @@
-﻿@model Proyecto_AMABISCA.Models.PT_DESCRIPCION
+﻿@model Proyecto_AMABISCA.Models.UT_CUENTA
 
 @{
     ViewBag.Title = "Delete";
@@ -26,12 +26,11 @@
     <div class="row justify-content-around">
 
         <div class="col-7">
-            <div class="card animated bounceInUp" style="width: 35rem;">
+            <div class="card animated bounceInUp" style="width: 32rem;">
                 <div class="card-body">
-                    <img class="card-img-top" src="@Url.Action("getImage","Productos",new { id = Model.PC_PRODUCTO})" alt="Card image" />
                     <h4 class="card-title">@Html.DisplayFor(model => model.NOMBRE)</h4>
-                    <p class="card-text font-weight-bold" style:"bold">Descripción:</p>
-                    <p class="card-text">@Html.DisplayFor(model => model.DESCRIPCION)</p>
+                    <p class="card-text font-weight-bold" style:"bold">Contacto:</p>
+                    <p class="card-text">@Html.DisplayFor(model => model.UT_ROL.NOMBRE)</p>
                 </div>
 
                 @using (Html.BeginForm())

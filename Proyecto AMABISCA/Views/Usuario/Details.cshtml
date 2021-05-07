@@ -1,0 +1,52 @@
+﻿@model Proyecto_AMABISCA.Models.UT_DESCRIPCION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .title {
+        margin-top: 50px;
+    }
+</style>
+<div class="container title logo">
+    <h2>DETALLES</h2>
+</div>
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-8">
+            <div class="card animated bounceInUp" style="width: 40rem;">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(model => model.APELLIDO), @Html.DisplayFor(model => model.NOMBRE)</h4>
+                    <div class="form-group row" align="center">
+                        <div class="col-md-4">
+                            <p class="card-text font-weight-bold" style:"bold">DNI:</p>
+                            <p class="card-text font-weight-light">@Html.DisplayFor(model => model.DNI)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="card-text font-weight-bold" style:"bold">Teléfono:</p>
+                            <p class="card-text font-weight-light">@Html.DisplayFor(model => model.TELEFONO)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="card-text font-weight-bold" style:"bold">Sexo:</p>
+                            <p class="card-text font-weight-light">@Html.DisplayFor(model => model.SEXO)</p>
+                        </div>
+                    </div>
+                    <p class="card-text font-weight-bold" style:"bold">Dirección:</p>
+                    <p class="card-text font-weight-light">@Html.DisplayFor(model => model.DIRECCION)</p>
+                    <p class="card-text font-weight-bold" style:"bold">Correo:</p>
+                    <p class="card-text font-weight-light">@Html.DisplayFor(model => model.CORREO)</p>
+                    <p class="card-text font-weight-bold" style:"bold">Fecha de nacimiento:</p>
+                    <p class="card-text font-weight-light">@Html.ValueFor(model => model.F_NACIMIENTO, "{0:dd/MM/yyyy}")</p>
+                </div>
+                <div class="card-footer justify-content-around" align="center">
+                    <a type="btn" href="@Url.Action("Edit", new { id = Model.PRC_USUARIO})" class="btn btn-primary col-3">EDITAR</a>
+                    <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-3">REGRESAR</a>
+                    <a type="btn" href="@Url.Action("Delete",new { id = Model.PRC_USUARIO})" class="btn btn-danger col-3">ELIMINAR</a>
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
+

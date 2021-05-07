@@ -1,0 +1,92 @@
+﻿@model Proyecto_AMABISCA.Models.UT_DESCRIPCION
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <section class="form-register">
+        <h4>FORMULARIO DE REGISTRO</h4>
+        <div class="form-group row">
+            @Html.DropDownList("PRC_USUARIO", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PRC_USUARIO, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group row">
+            <label for="nombres" class="col-2 col-form-label">Nombres</label>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="NOMBRE" id="NOMBRE" placeholder="Ingrese sus Nombres">
+                @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="APELLIDO" id="APELLIDO" placeholder="Ingrese sus Apellidos">
+                @Html.ValidationMessageFor(model => model.APELLIDO, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="DNI" class="col-2 col-form-label">Contacto</label>
+            <div class="col-md-5">
+                <input class="controls" type="text" name="DNI" id="DNI" placeholder="Ingrese su DNI">
+                @Html.ValidationMessageFor(model => model.DNI, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-5">
+                <input class="controls" type="tel" name="TELEFONO" id="TELEFONO" placeholder="Ingrese su Teléfono">
+                @Html.ValidationMessageFor(model => model.TELEFONO, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="correo" class="col-2 col-form-label">Correo</label>
+            <div class="col-md-5">
+                <input class="controls" type="email" name="CORREO" id="CORREO" placeholder="Ingrese su Correo">
+                @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="nacimiento" class="col-2 col-form-label">Fecha de nacimiento</label>
+            <div class="col-md-5">
+                <input class="controls" type="date" name="F_NACIMIENTO" id="F_NACIMIENTO">
+                @Html.ValidationMessageFor(model => model.F_NACIMIENTO, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="sexo" class="col-2 col-form-label">Género</label>
+            <div class="col-md-4">
+                <select class="controls" name="SEXO" id="SEXO">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.SEXO, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="direccion" class="col-2 col-form-label">Dirección</label>
+            <div class="col-md-10">
+                <input class="controls" type="text" name="DIRECCION" id="DIRECCION" placeholder="Ingrese su Dirección">
+                @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12 justify-content-around d-flex">
+                        <input type="submit" value="CREAR" class="btn btn-primary col-5" />
+                        <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-5">REGRESAR</a>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+    </section>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

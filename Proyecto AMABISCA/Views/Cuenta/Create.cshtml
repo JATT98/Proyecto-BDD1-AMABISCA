@@ -1,0 +1,52 @@
+﻿@model Proyecto_AMABISCA.Models.UT_CUENTA
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <section class="form-register">
+        <h4>FORMULARIO DE REGISTRO</h4>
+        <div class="form-group row">
+            <label for="usuario" class="col-2 col-form-label">Cuenta</label>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-md-5">
+                <input class="controls" type="text" name="NOMBRE" id="NOMBRE" placeholder="Ingrese su Nombre de usuario">
+                @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-5">
+                <input class="controls" type="password" name="CLAVE" id="CLAVE" placeholder="Ingrese su Contraseña">
+                @Html.ValidationMessageFor(model => model.CLAVE, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-2">ROL</label>
+            <div class="col-md-6">
+                @Html.DropDownList("RC_ROL", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RC_ROL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group row">
+            <label for="registrar" name="terms" class="col-form-label col-7 align-content-end">
+                Al registrarse y utilizar el sistema para la gestión de ventas de AMABISCA, usted acepta que ha leído y conoce los <a class="stretched-link" href="https://github.com/JATT98/Proyecto-BDD1-AMABISCA">Terminos y Condiciones</a> para su uso.
+            </label>
+            <div class="col-md-5">
+                <input type="submit" value="CREAR" class="btn btn-primary col-12" />
+                <p>@Html.ActionLink("¿Ya tengo Cuenta?", "IniSesion", "Home")</p>
+            </div>
+        </div>
+
+    </section>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

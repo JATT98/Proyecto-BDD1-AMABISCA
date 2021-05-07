@@ -1,0 +1,112 @@
+﻿@model Proyecto_AMABISCA.Models.UT_DESCRIPCION
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    .title {
+        margin-top: 50px;
+    }
+
+    .form-register {
+        width: 600px;
+    }
+</style>
+
+<div class="container title logo">
+    <h2>EDITAR</h2>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="container form-register">
+    <h4>USUARIO</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PRC_USUARIO)
+
+    <div class="form-group">
+        <label class="control-label col-md-4">NOMBRE</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">APELLIDO</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.APELLIDO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.APELLIDO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">DNI</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.DNI, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DNI, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">TELÉFONO</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TELEFONO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TELEFONO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">DIRECCIÓN</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">CORREO</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.CORREO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">SEXO</label>
+        <div class="col-md-12">
+            <select class="controls" name="SEXO" id="SEXO">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.SEXO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">FECHA DE NACIMIENTO</label>
+        <div class="col-md-12">
+            <input class="controls" type="date" name="F_NACIMIENTO" id="F_NACIMIENTO">
+            @Html.ValidationMessageFor(model => model.F_NACIMIENTO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-12 justify-content-around d-flex">
+            <input type="submit" value="GUARDAR" class="btn btn-primary col-5" />
+            <a type="btn" href="@Url.Action("Index")" class="btn btn-secondary col-5">REGRESAR</a>
+
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
